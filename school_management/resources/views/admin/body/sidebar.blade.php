@@ -1,3 +1,13 @@
+@php
+$prefix = Request::route()->getPrefix();
+$route = Route::current()->getName();
+
+@endphp
+
+
+
+
+
 <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">
@@ -17,14 +27,14 @@
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">
 
-            <li>
-                <a href="index.html">
+            <li class="{{ ($route == 'dashboard')? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}">
                     <i data-feather="pie-chart"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/users')? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
                     <span>Manage User</span>
@@ -38,7 +48,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/profile')? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Manage Profile</span>
                     <span class="pull-right-container">
@@ -51,32 +61,50 @@
                     {{-- <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li> --}}
                 </ul>
             </li>
-
-
-            <li class="header nav-small-cap">User Interface</li>
-
-            <li class="treeview">
+            <li class="treeview {{ ($prefix == '/setups')? 'active' : '' }}">
                 <a href="#">
-                    <i data-feather="grid"></i>
-                    <span>Components</span>
+                    <i data-feather="mail"></i> <span>Setup Management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                    <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
+                    <li><a href="{{ route('student.class.view') }}"><i class="ti-more"></i>Student Class</a></li>
                 </ul>
             </li>
 
 
 
-            <li>
-                <a href="auth_login.html">
-                    <i data-feather="lock"></i>
-                    <span>Log Out</span>
-                </a>
-            </li>
+            
+            {{-- <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li> --}}
+        </ul>
+        </li>
+
+
+        <li class="header nav-small-cap">User Interface</li>
+
+        <li class="treeview">
+            <a href="#">
+                <i data-feather="grid"></i>
+                <span>Components</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
+                <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
+            </ul>
+        </li>
+
+
+
+        <li>
+            <a href="auth_login.html">
+                <i data-feather="lock"></i>
+                <span>Log Out</span>
+            </a>
+        </li>
 
         </ul>
     </section>
