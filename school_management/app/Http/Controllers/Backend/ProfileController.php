@@ -41,7 +41,7 @@ class ProfileController extends Controller
             @unlink(public_path('upload/user_images/' . $data->image));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/user_images'), $filename);
-            $data['image'] = $filename;
+            $data['image'] = $filename; 
         }
         $data->save();
         $notification = array(
