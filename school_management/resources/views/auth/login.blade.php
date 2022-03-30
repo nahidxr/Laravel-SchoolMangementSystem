@@ -20,7 +20,8 @@
 
 </head>
 
-<body class="hold-transition theme-primary bg-gradient-primary">
+{{-- <body class="hold-transition theme-primary bg-gradient-primary"> --}}
+<body class="hold-transition theme-primary bg-gradient-warning">
 
     <div class="container h-p100">
         <div class="row align-items-center justify-content-md-center h-p100">
@@ -73,7 +74,7 @@
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-info btn-rounded mt-10">SIGN IN</button>
+                                        <button type="submit" class="btn btn-success btn-rounded mt-10">SIGN IN</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>
@@ -95,7 +96,7 @@
 
                             <div class="text-center">
                                 <p class="mt-15 mb-0 text-white">Don't have an account? <a
-                                        href="{{ route('register') }}" class="text-info ml-5">Sign Up</a></p>
+                                        href="{{ route('register') }}" class="text-warning ml-5">Sign Up</a></p>
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@ class FeeCategoryController extends Controller
 {
     public function ViewFeeCat()
     {
-        $data['allData'] = StudentGroup::all();
+        $data['allData'] = FeeCategory::all();
         return view('backend.setup.fee_category.view_fee_cat', $data);
     }
     public function FeeCategoryAdd()
@@ -24,7 +24,7 @@ class FeeCategoryController extends Controller
         $validatedData = $request->validate([
 
 
-            'name' => 'required|unique:fee_categories ,name',
+            'name' => 'required|unique:fee_categories,name',
 
         ]);
 
@@ -55,7 +55,7 @@ class FeeCategoryController extends Controller
         $validatedData = $request->validate([
 
 
-            'name' => 'required|unique: fee_categories ,name',
+            'name' => 'required|unique:fee_categories,name',
 
         ]);
 
@@ -68,6 +68,8 @@ class FeeCategoryController extends Controller
 
 
         );
+        return redirect()->route('fee.category.view')->with($notification);
+
     }
     public function FeeCategoryDelete($id)
     {
