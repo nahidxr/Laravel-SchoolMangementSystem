@@ -106,8 +106,8 @@ Route::prefix('setups')->group(function () {
     Route::get('/fee/amount/add', [FeeAmountController::class, 'AddFeeAmount'])->name('fee.amount.add');
     Route::post('/fee/amount/store', [FeeAmountController::class, 'StoreFeeAmount'])->name('store.fee.amount');
 
-    //  Route::get('/fee/category/edit/{id}', [FeeAmountController::class, 'FeeCategoryEdit'])->name('fee.category.edit');
-    //  Route::post('/fee/category/update/{id}', [FeeAmountController::class, 'FeeCategoryUpdate'])->name('update.fee.category');
-    //  Route::get('/fee/category/delete/{id}', [FeeAmountController::class, 'FeeCategoryDelete'])->name('fee.category.delete');
-
+    Route::get('/fee/amount/edit/{id}', [FeeAmountController::class, 'FeeAmountEdit'])->name('fee.amount.edit');
+    Route::post('/fee/amount/update/{fee_category_id}', [FeeAmountController::class, 'FeeAmountUpdate'])->name('update.fee.amount');
+    Route::get('/fee/amount/delete/{id}', [FeeAmountController::class, 'FeeAmountDelete'])->name('fee.amount.delete');
+    Route::get('/fee/amount/details/{id}', [FeeAmountController::class, 'FeeAmountDetails'])->name('fee.amount.details');
 });

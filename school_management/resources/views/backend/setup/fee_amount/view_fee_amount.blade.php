@@ -30,15 +30,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($allData as $key => $fee_cat_amount)
+                                        @foreach ($allData as $key => $amount)
 
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $fee_cat_amount->fee_category_id }}</td>
-                                            <td><a href="{{ route('fee.category.edit',$fee_cat_amount->id) }}"
+                                            <td>{{ $amount->name }}</td>
+                                            {{-- <td>{{ $amount['fee_category']['name'] }}</td> --}}
+                                            <td><a href="{{ route('fee.amount.edit',$amount->id)}}"
                                                     class="btn btn-info">Edit</a>
-                                                <a href="{{ route('fee.category.delete',$fee_cat_amount->id) }}"
+                                                <a href="{{ route('fee.amount.edit',$amount->id)}}"
                                                     class="btn btn-danger" id="delete">Delete</a>
+                                                <a href="{{ route('fee.amount.details',$amount->id)}}"
+                                                    class="btn btn-primary" id="details">Details</a>
+
                                             </td>
 
                                         </tr>

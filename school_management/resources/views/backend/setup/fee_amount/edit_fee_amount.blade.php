@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col">
 
-                            <form method="post" action="{{ route('store.fee.amount') }}">
+                            <form method="post" action="{{ route('update.fee.amount',$editData[0]->fee_category_id) }}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -35,7 +35,9 @@
                                                         <option value="" selected="" disabled="">Select Fee Category
                                                         </option>
                                                         @foreach($fee_categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}
+                                                        <option value="{{ $category->id }}"
+                                                            {{ ($editData[0]->fee_category_id == $category->id)? "selected":"" }}>
+                                                            {{ $category->name }}
                                                         </option>
                                                         @endforeach
                                                     </select>
@@ -43,50 +45,63 @@
                                             </div> <!-- // end form group -->
 
 
+                                            @foreach ($editData as $edit)
+                                            <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
 
-                                            <div class="row">
 
-                                                <div class="col-md-5">
+                                                <div class="row">
 
-                                                    <div class="form-group">
-                                                        <h5>Student Class <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="class_id[]" required="" class="form-control">
-                                                                <option value="" selected="" disabled="">Select Fee
-                                                                    Category</option>
-                                                                @foreach($classes as $class)
-                                                                <option value="{{ $class->id }}">{{ $class->name }}
-                                                                </option>
-                                                                @endforeach
-                                                            </select>
+                                                    <div class="col-md-5">
+
+                                                        <div class="form-group">
+                                                            <h5>Student Class <span class="text-danger">*</span></h5>
+                                                            <div class="controls">
+                                                                <select name="class_id[]" required=""
+                                                                    class="form-control">
+                                                                    <option value="" selected="" disabled="">Select Fee
+                                                                        Category</option>
+                                                                    @foreach($classes as $class)
+                                                                    <option value="{{ $class->id }}"
+                                                                        {{ ($edit->class_id == $class->id)? "selected":"" }}>
+                                                                        {{ $class->name }}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div> <!-- // end form group -->
+
+
+                                                    </div> <!-- End col-md-5 -->
+
+                                                    <div class="col-md-5">
+
+                                                        <div class="form-group">
+                                                            <h5>Amount <span class="text-danger">*</span></h5>
+                                                            <div class="controls">
+                                                                <input type="text" value={{ $edit->amount}}
+                                                                    name="amount[]" class="form-control">
+                                                            </div>
                                                         </div>
-                                                    </div> <!-- // end form group -->
 
+                                                    </div><!-- End col-md-5 -->
 
-                                                </div> <!-- End col-md-5 -->
+                                                    <div class="col-md-2" style="padding-top: 25px;">
+                                                        <span class="btn btn-success addeventmore"><i
+                                                                class="fa fa-plus-circle"></i> </span>
+                                                        <span class="btn btn-danger removeeventmore"><i
+                                                                class="fa fa-minus-circle"></i> </span>
 
-                                                <div class="col-md-5">
+                                                    </div><!-- End col-md-5 -->
 
-                                                    <div class="form-group">
-                                                        <h5>Amount <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="amount[]" class="form-control">
-                                                        </div>
-                                                    </div>
+                                                </div> <!-- end Row -->
+                                            </div>
 
-                                                </div><!-- End col-md-5 -->
-
-                                                <div class="col-md-2" style="padding-top: 25px;">
-                                                    <span class="btn btn-success addeventmore"><i
-                                                            class="fa fa-plus-circle"></i> </span>
-                                                </div><!-- End col-md-5 -->
-
-                                            </div> <!-- end Row -->
+                                            @endforeach
 
                                         </div> <!-- // End add_item -->
 
                                         <div class="text-xs-right">
-                                            <input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
+                                            <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
                                         </div>
                             </form>
 
@@ -151,7 +166,7 @@
         </div>
     </div>
 </div>
- 
+
 
 <script type="text/javascript">
     $(document).ready(function () {
