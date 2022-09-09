@@ -13,8 +13,8 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Exam Type List</h3>
-                            <a href=" {{ route('exam.type.add') }}" style="float: right;"
+                            <h3 class="box-title">Subject List</h3>
+                            <a href=" {{ route('school.subject.add') }}" style="float: right;"
                                 class="btn btn-rounded btn-success mb-5">Add Exam Type</a>
                         </div>
                         <!-- /.box-header -->
@@ -24,7 +24,7 @@
                                     <thead>
                                         <tr>
                                             <th width="5%">SL</th>
-                                            <th>Exam Type</th>
+                                            <th>Subject Type</th>
                                             <th width="25%">Action</th>
                                         </tr>
                                     </thead>
@@ -34,12 +34,11 @@
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $type->name }}</td>
                                             {{-- <td>{{ $amount['fee_category']['name'] }}</td> --}}
-                                            <td><a href="{{ route('exam.type.edit',$type->id)}}"
+                                            <td><a href="{{ route('school.subject.edit',$type->id)}}"
                                                     class="btn btn-info">Edit</a>
-                                                <a href="{{ route('exam.type.delete',$type->id)}}"
+                                                <a href="{{ route('school.subject.delete',$type->id)}}"
                                                     class="btn btn-danger" id="delete">Delete</a>
-                                                {{-- <a href="{{ route('exam.type.details',$type->id)}}"
-                                                class="btn btn-primary" id="details">Details</a> --}}
+                                               
                                             </td>
 
                                         </tr>

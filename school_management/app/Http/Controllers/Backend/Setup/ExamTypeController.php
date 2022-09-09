@@ -77,4 +77,15 @@ class ExamTypeController extends Controller
         );
         return redirect()->route('exam.type.view')->with($notification);
     }
+    public function ExamTypeDelete($id)
+    {
+
+        $data = ExamType::find($id);
+        $data->delete();
+        $notification = array(
+            'message' => 'Exam Type Deleted Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('exam.type.view')->with($notification);
+    }
 }
