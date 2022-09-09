@@ -131,15 +131,16 @@ class FeeAmountController extends Controller
 
         // $data['allData'] = DB::select($query);
 
-        
 
-        // $data['detailsData'] = DB::table('fee_category_amounts')
-        //     ->join('student_classes ', 'fee_category_amounts.class_id', '=', 'student_classes .id')
-        //     ->select('fee_category_amounts.fee_category_id', 'student_classes.id', 'student_classes.name', 'fee_category_amounts.amount')
-        //     ->groupBy('fee_category_amounts.fee_category_id', 'student_classes.id', 'student_classes.name', 'fee_category_amounts.amount')
-        //     ->where('fee_category_id', $id)
-        //     ->get();
-        // // dd($data);
+
+        $data['detailsData'] = DB::table('fee_category_amounts')
+            ->join('student_classes', 'fee_category_amounts.class_id', '=', 'student_classes.id')
+            ->select('fee_category_amounts.fee_category_id', 'student_classes.id', 'student_classes.name', 'fee_category_amounts.amount')
+            // ->groupBy('fee_category_amounts.fee_category_id', 'student_classes.id', 'student_classes.name', 'fee_category_amounts.amount')
+            ->where('fee_category_amounts.fee_category_id', $id)
+            ->groupBy('fee_category_amounts.fee_category_id', 'student_classes.id', 'student_classes.name', 'fee_category_amounts.amount')
+            ->get();
+        // dd($data);
 
 
         // $data['detailsData'] = FeeCategoryAmount::where('fee_category_id', $id)->orderBy('class_id', 'asc')->get();

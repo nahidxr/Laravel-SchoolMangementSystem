@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="  {{ asset('backend/images/favicon.ico') }}">
 
     <title>School Managemnet Dashboard</title>
@@ -54,18 +55,34 @@
 
     <!-- Vendor JS -->
     <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
-    <script src="{{ asset('../ assets/icons/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
 
-    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/js/pages/data-table.js')}}"></script>
+
+    <script src="{{asset('../assets/vendor_components/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('backend/js/pages/data-table.js')}}"></script>
 
     <!-- Sunny Admin App -->
     <script src=" {{ asset('backend/js/template.js') }}"></script>
     <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{-- jquery cdn --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
+
+
+    {{-- ajax setup --}}
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    </script>
 
 
     <script>
@@ -129,6 +146,7 @@
         @endif
 
     </script>
+
 
 
 </body>

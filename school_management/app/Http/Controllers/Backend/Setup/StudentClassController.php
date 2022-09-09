@@ -10,7 +10,7 @@ class StudentClassController extends Controller
 {
     public function ViewStudent()
     {
-        $data['allData'] = StudentClass::all();
+        $data['allData'] = StudentClass::paginate(1);
         return view('backend.setup.student_class.view_class', $data);
     }
 
@@ -75,7 +75,8 @@ class StudentClassController extends Controller
     }
 
 
-    public function StudentClassDelete($id){
+    public function StudentClassDelete($id)
+    {
         $data = StudentClass::find($id);
         $data->delete();
         $notification = array(
@@ -83,7 +84,12 @@ class StudentClassController extends Controller
             'alert-type' => 'info'
         );
         return redirect()->route('student.class.view')->with($notification);
+    }
 
+    public function StudentClassPagination(Request $request)
+    {
 
+        $data['allData'] = StudentClass::paginate(2);
+        return view('backend.setup.student_class.paginate_class', $data)->render();
     }
 }
